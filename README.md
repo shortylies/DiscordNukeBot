@@ -26,6 +26,24 @@ My own [server](https://discord.gg/ka35JqY) had been nuked before, so please do 
 * .admin (will give the user admin role)
 * .logout (will log the bot out)
 
+## [Nuke Ultimate](https://youtu.be/6JK-d-plvXU)
+* .admin (gives a role with all permissions enabled to the message author)
+* .ban (attempts to ban everyone (except the author) from the guild)
+* .channel
+  * .channel create (spam create channels)
+  * .channel delete (delete all channels)
+  * .channel rename (rename all channels)
+* .dm (attempt to DM (direct message) everyone in the guild)
+* .kick (attempts to kick everyone (except the author) from the guild)
+* .nickname (attempts to nickname everyone in the guild)
+* .purge (deletes all messages from all channels)
+* .role
+  * .role create (spam create roles)
+  * .role delete (delete all roles lower than the bot)
+  * .role rename (rename all roles lower than the bot)
+* .spam (spam messages in all channels)
+* .logout (logs the bot out)
+
 # Preparation
 Before you start coding, make sure that you have a Python intepreter. You can use [repl.it](https://repl.it/~), which is online. Therefore, you do not need to install anything. Otherwise, you can use programs such as Visual Studio, IDLE, PyCharm, Atom, and Sublime Text. If so, make sure to follow the instructions below.
 
