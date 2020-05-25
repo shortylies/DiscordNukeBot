@@ -26,7 +26,7 @@ My own [server](https://discord.gg/ka35JqY) had been nuked before, so please do 
 * .admin (will give the user admin role)
 * .logout (will log the bot out)
 
-## [Nuke Ultimate](https://youtu.be/6JK-d-plvXU)
+## [Nuke Ultimate](https://youtu.be/qPRsHdIsC6o)
 * .admin (gives a role with all permissions enabled to the message author)
 * .ban (attempts to ban everyone (except the author) from the guild)
 * .channel
