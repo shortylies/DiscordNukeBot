@@ -16,15 +16,8 @@ client = commands.Bot(
 
 
 def allowed(ctx):
-    """A custom check to make sure other people are not able to use the code.
-    The first line only checks for one user.
-    If multiple users are whitelisted, then use the second line."""
+    """A custom check to make sure other people are not able to use the code."""
     return ctx.author.id == ID  # replace ID with whitelisted user ID
-    return ctx.author.id in [
-        ID,
-        ID,
-        ID
-   ]  # replace ID with whitelisted users ID
 
 
 @client.event
