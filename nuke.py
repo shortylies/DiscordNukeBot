@@ -1,11 +1,11 @@
 import discord
 from discord.ext import commands
 
-client = commands.Bot(command_prefix = '.')
+client = commands.Bot(command_prefix = 'x')
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.dnd, activity=discord.Game('Nuking Servers'))
+    await client.change_presence(status=discord.Status.dnd, activity=discord.Game('you're not safe'))
     print(f'\nLogged in as {client.user.name}#{client.user.discriminator}, User ID: {client.user.id}, Version: {discord.__version__}\n')
 
 @client.command()
